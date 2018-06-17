@@ -42,6 +42,11 @@ class App extends React.Component {
     plTracks.push(track);
 
     this.setState({playlistTracks: plTracks});
+
+    // remove track from search results
+    let srTracks = this.state.searchResults;
+    srTracks.splice(srTracks.indexOf(srTracks.find(srTrack => {return srTrack.id === track.id;})), 1);
+    this.setState({searchResults: srTracks});
   }
 
   removeTrack(track) {
